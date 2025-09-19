@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Postal Robloxian</title>
+    <meta name="description" content="Personal website and about me page">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="profile-image.png" alt="Postal Robloxian" class="profile-pic">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#interests">Interests</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1><span class="gradient-text">Hey, I'm Postal Robloxian!</span></h1>
+            <p class="subtitle">Welcome to my corner of the internet</p>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </header>
+
+        <main>
+            <section id="about" class="about-me">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p>I'm an autistic teen dude who's passionate about gaming and discovering new worlds through different games and stories. I love diving deep into game mechanics, exploring virtual worlds, and connecting with communities that share my interests.</p>
+                    <p>When I'm not gaming, you can find me learning about new technologies, watching gaming content, or working on creative projects. I believe in the power of gaming to bring people together and create amazing experiences.</p>
+                </div>
+            </section>
+
+            <section id="interests" class="interests">
+                <h2>Current Hyperfixations</h2>
+                <p>Right now, these are all duking it out in my head to see who becomes my next big obsession:</p>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <div class="interest-icon">🌺</div>
+                        <h3>Pokémon Sun and Moon</h3>
+                        <p>Exploring the Alola region and mastering Z-moves</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🔧</div>
+                        <h3>Ratchet and Clank</h3>
+                        <p>Epic adventures across the galaxy with amazing gadgets</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🧟</div>
+                        <h3>Left 4 Dead 2</h3>
+                        <p>Surviving the zombie apocalypse with friends</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">🐉</div>
+                        <h3>Dragons</h3>
+                        <p>Majestic creatures, lore, and fantasy worlds</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">⚔️</div>
+                        <h3>SFOTH</h3>
+                        <p>Classic Roblox sword fighting on the heights</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="contact" class="links">
+                <h2>Find Me Online</h2>
+                <div class="social-links">
+                    <a href="https://www.roblox.com/users/1196178966/profile?friendshipSourceType=PlayerSearch" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="social-link roblox">
+                        <i class="fas fa-cube"></i>
+                        <span>Roblox</span>
+                    </a>
+                    <div class="social-link discord">
+                        <i class="fab fa-discord"></i>
+                        <span>eggy0223</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Postal Robloxian - Made with ❤️ for a friend</p>
+        </footer>
+    </div>
+    <script>
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const sections = document.querySelectorAll('section');
+            
+            // Smooth scroll to sections
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80; // Account for nav height
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active link highlighting
+            function updateActiveLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Update active link on scroll
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink(); // Initial call
+            
+            // Nav background on scroll
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('.top-nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
